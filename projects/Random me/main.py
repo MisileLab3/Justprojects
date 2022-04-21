@@ -1,4 +1,4 @@
-from secrets import SystemRandom
+from numpy import random
 import click
 
 @click.command()
@@ -8,13 +8,18 @@ import click
 @click.option("--output", help="if value is std print it, else write it to [output].txt", default="std")
 def main(min: int, max: int, amount: int, output: str):
     """random some numbers."""
-    if output == "std":
+    if min >= max:
+        click.echo("can't be min >= max")
+    elif output == "std":
         for _ in range(amount):
-            click.echo(str(SystemRandom().randint(min, max)))
+            click.echo(str(getRandomNumber(min, max)))
     else:
         with open(f"{output}.txt", "w") as f:
             for _ in range(amount):
-                f.write(str(SystemRandom().randint(min, max)))
+                f.write(str(getRandomNumber(min, max)))
+
+def getRandomNumber(min: int, max: int):
+    return random.randint(min, max, size=1)[0]
 
 if __name__ == "__main__":
     main()
