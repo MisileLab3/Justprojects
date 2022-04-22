@@ -11,15 +11,15 @@ def main(min: int, max: int, amount: int, output: str):
     if min >= max:
         click.echo("can't be min >= max")
     elif output == "std":
-        for _ in range(amount):
-            click.echo(str(getRandomNumber(min, max)))
+        for a in getRandomNumber(min, max, amount):
+            click.echo(str(a))
     else:
         with open(f"{output}.txt", "w") as f:
-            for _ in range(amount):
-                f.write(str(getRandomNumber(min, max)))
+            for a in getRandomNumber(min, max, amount):
+                click.echo(str(a))
 
-def getRandomNumber(min: int, max: int):
-    return random.randint(min, max, size=1)[0]
+def getRandomNumber(min: int, max: int, size: int):
+    return random.randint(min, max, size=size)[0]
 
 if __name__ == "__main__":
     main()
