@@ -7,16 +7,6 @@ fn main() {
 }
 
 fn answerit() {
-    let status = self_update::backends::github::Update::configure()
-    .repo_owner("jaemk")
-    .repo_name("self_update")
-    .bin_name("github")
-    .show_download_progress(true)
-    .current_version(cargo_crate_version!())
-    .build().unwrap()
-    .update().unwrap();
-    println!("Update status: `{}`!", status.version());
-
     let quesanswer = read_lines("quesanswer.txt");
     let quesinput = read_lines("quesinput.txt");
     let quesbool = read_lines("quesbool.txt");
