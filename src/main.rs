@@ -1,15 +1,37 @@
+use clap::Parser;
+
 use std::fs::File;
 use std::io::{BufReader, BufRead};
 use std::path::Path;
 
-fn main() {
-    answerit();
+/// Simple program to check score.
+#[derive(Parser, Debug)]
+#[clap(author, version, about, long_about = None)]
+struct Args {
+    /// Answer of questions list (filename(only txt))
+    #[clap(long)]
+    answers: String,
+
+    /// Input of questions list (filename(only txt))
+    #[clap(long)]
+    inputs: String,
+
+    /// Is it correct or not correct? (filename(only txt))
+    #[clap(long)]
+    quesbool: String
 }
 
-fn answerit() {
-    let quesanswer = read_lines("quesanswer.txt");
-    let quesinput = read_lines("quesinput.txt");
-    let quesbool = read_lines("quesbool.txt");
+fn main() {
+    let args = Args::parse();
+    let (answers, inputs, quesbool) = (args.answers, args.inputs, args.quesbool);
+
+    answerit(answers, inputs, quesbool);
+}
+
+fn answerit(answers: String, inputs: String, quesbool: String) {
+    let quesanswer = read_lines(format!("{}.txt", answers));
+    let quesinput = read_lines(format!("{}.txt", inputs));
+    let quesbool = read_lines(format!("{}.txt", quesbool));
     let mut falselist: Vec<usize> = Vec::new();
 
     for i in 0..quesinput.len() {
