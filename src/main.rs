@@ -6,7 +6,7 @@ use std::path::Path;
 
 /// Simple program to check score.
 #[derive(Parser, Debug)]
-#[clap(author, version, about, long_about = None)]
+#[clap(author, about, long_about = None)]
 struct Args {
     /// Answer of questions list (filename(only txt))
     #[clap(long)]
