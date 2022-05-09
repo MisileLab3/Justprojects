@@ -1,8 +1,8 @@
+use clap::Parser;
+
 use std::fs::File;
 use std::io::{BufReader, BufRead};
 use std::path::Path;
-
-use clap::Parser;
 
 /// Simple program for check this is false test point.
 #[derive(Parser, Debug)]
@@ -41,7 +41,7 @@ fn answerit() {
         }
     }
 
-    if falselist.len() == 0 {
+    if falselist.is_empty() {
         println!("No wrong question!")
     } else {
         println!("Wrong question (or mistake input): {:#?}", falselist)
