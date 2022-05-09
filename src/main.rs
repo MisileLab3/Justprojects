@@ -29,9 +29,9 @@ fn main() {
 fn answerit() {
     let args = Arguments::parse();
 
-    let quesanswer = read_lines(args.quesanswer);
-    let quesinput = read_lines(args.quesinput);
-    let quesbool = read_lines(args.quesbool);
+    let quesanswer = read_lines(format!("{}.txt", args.quesanswer));
+    let quesinput = read_lines(format!("{}.txt", args.quesinput));
+    let quesbool = read_lines(format!("{}.txt", args.quesbool));
     let mut falselist: Vec<usize> = Vec::new();
 
     for i in 0..quesinput.len() {
