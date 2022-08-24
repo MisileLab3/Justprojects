@@ -6,7 +6,7 @@ authors = ["MisileLaboratory"]
 license = "AGPL v3.0"
 
 [tool.poetry.dependencies]
-python = "3.10.4"
+python = "3.10.6"
 numpy = "^1.22.3"
 click = "^8.1.2"
 
